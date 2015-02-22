@@ -10,5 +10,13 @@
 #define __setcovering_core__AlgorithmGenetic__
 
 #include <stdio.h>
+#include "Algorithm.h"
+
+class AlgorithmGenetic : Algorithm {
+public:
+    AlgorithmGenetic(Instance instance);
+    
+    
+};
 
 #endif /* defined(__setcovering_core__AlgorithmGenetic__) */

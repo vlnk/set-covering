@@ -7,3 +7,7 @@
 //
 
 #include "AlgorithmGenetic.h"
+
+AlgorithmGenetic::AlgorithmGenetic(Instance instance) : Algorithm(instance) {
+    
+}

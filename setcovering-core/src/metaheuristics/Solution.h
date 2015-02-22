@@ -11,4 +11,9 @@
 
 #include <stdio.h>
 
+class Solution {
+public:
+    
+};
+
 #endif /* defined(__setcovering_core__Solution__) */

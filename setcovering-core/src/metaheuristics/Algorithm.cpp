@@ -7,3 +7,7 @@
 //
 
 #include "Algorithm.h"
+
+Algorithm::Algorithm(const Instance instance) {
+    
+}

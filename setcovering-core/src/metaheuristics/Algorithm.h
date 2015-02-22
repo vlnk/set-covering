@@ -10,5 +10,15 @@
 #define __setcovering_core__Algorithm__
 
 #include <stdio.h>
+#include "Instance.h"
+
+class Algorithm {
+protected:
+    int nbEvalMax;
+    
+public:
+    Algorithm(const Instance instance);
+    virtual ~Algorithm() {};
+};
 
 #endif /* defined(__setcovering_core__Algorithm__) */

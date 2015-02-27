@@ -12,7 +12,19 @@
 #include <stdio.h>
 
 class Solution {
+private:
+    double _objective_function;
+    
 public:
+    double getObjective() const { return _objective_function; }
+    void setObjective(int objective_function) { _objective_function = objective_function; }
+    
+    Solution(int);
+    virtual ~Solution();
+    
+    Solution(const Solution&);
+    virtual Solution* clone() const = 0;
+    Solution& operator= (const Solution&);
     
 };
 

@@ -10,28 +10,33 @@
 #define __setcovering_core__InputChecker__
 
 #include <stdio.h>
+#include <vector>
+#include <stdexcept>
+
 #include <fstream>
 #include <iostream>
 #include <sstream>
-#include <vector>
-
-#include "Instance.h"
 
 class InputChecker {
 private:
-    InputChecker() {};
+    enum _algorithms {GENETIC=0, ANT=1};
+    
+    int _algorithm;
+    std::string _instance_name;
+    
+    InputChecker() : _algorithm(0) {};
     ~InputChecker() {};
     
     InputChecker& operator= (const InputChecker) = delete;
     InputChecker(const InputChecker&) = delete;
     
-    int readCovers(std::vector<std::vector<int> > all_integers, std::vector<int> &cover, int starting_line);
-    int readCosts(std::vector< std::vector<int> > all_integers, std::vector<int>& costs, int num_of_columns, int starting_line);
-    
 public:
     static InputChecker& getInstance();
-    
-    Instance* readInstance(std::string instanceName);
+
+    bool readArguments(int, const char * argv[]);
+    void readAlgorithm(const std::string);
+    void getHelp(const std::string prog_name, const std::string problem_name);
+    const std::string& getInstanceName() const { return _instance_name; }
 };
 
 

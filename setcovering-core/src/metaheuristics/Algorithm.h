@@ -10,14 +10,20 @@
 #define __setcovering_core__Algorithm__
 
 #include <stdio.h>
-#include "Instance.h"
+#include "../core/Problem.h"
+#include "Solution.h"
 
 class Algorithm {
 protected:
-    int nbEvalMax;
+    int _nb_eval_max;
+    int _cpt_eval;
+    const Problem _problem;
     
 public:
-    Algorithm(const Instance instance);
+    Algorithm(const Problem&, int = 10000);
+    
+    virtual Solution* run() = 0;
+    virtual void evaluate(Solution*) = 0;
     virtual ~Algorithm() {};
 };
 

@@ -7,7 +7,9 @@
 //
 
 #include "Algorithm.h"
+#include "../core/Problem.h"
 
-Algorithm::Algorithm(const Instance instance) {
-    
-}
+Algorithm::Algorithm(const Problem& problem, int nb_eval_max) :
+    _problem(problem),
+    _nb_eval_max(nb_eval_max),
+    _cpt_eval(0) {}

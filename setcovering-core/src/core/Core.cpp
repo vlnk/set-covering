@@ -7,3 +7,6 @@
 //
 
 #include "Core.h"
+
+Core::Core(Algorithm& algorithm) :
+    _algorithm(algorithm) {}

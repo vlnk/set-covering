@@ -13,80 +13,57 @@ InputChecker& InputChecker::getInstance() {
     return instance;
 }
 
-Instance* InputChecker::readInstance(std::string instance_name) {
+bool InputChecker::readArguments(int argc, const char * argv[]) {
+    std::vector<std::string> arguments(argv + 1, argv + argc);;
+    bool can_execute = true;
     
-    std::cout << instance_name << std::endl;
-    std::ifstream file(instance_name);
-    
-    std::vector<int> costs;
-    std::vector<std::vector<int>> covers;
-    
-    if (file.is_open()) {
-        std::string line;
-        std::vector< std::vector<int> > all_integers;
-        
-        while ( getline(file, line ) ) {
-            std::istringstream is( line );
-            all_integers.push_back(
-                std::vector<int>(std::istream_iterator<int>(is),
-                                 std::istream_iterator<int>() ) );
+    for (auto it = arguments.begin(); it != arguments.end(); it++) {
+        if ((*it)[0] == '-') {
+            if (it + 1 == arguments.end() && (*it).compare("-help") != 0) {
+                throw std::invalid_argument("Argument for " + *it + " is empty");
+            }
+            
+            if ((*it).compare("-help") == 0) {
+                getHelp("setcovering-core","set covering");
+                can_execute = false;
+            }
+            else if ((*it).compare("-alg") == 0) {
+                if (it + 1 != arguments.end()) readAlgorithm(*(it + 1));
+            }
+            else if ((*it).compare("-instance") == 0) {
+                if (it + 1 != arguments.end()) _instance_name = *(it + 1);
+            }
         }
-        
-        int last_line_parsed = 0;
-        
-        int num_of_rows = all_integers[0][0];
-        int num_of_columns = all_integers[0][1];
-
-        covers.resize(num_of_rows);
-        
-        last_line_parsed++;
-        
-        last_line_parsed = readCosts(all_integers, costs, num_of_columns, last_line_parsed);
-        
-        for (int i = 0; i < num_of_rows; i++) {
-            last_line_parsed = readCovers(all_integers, covers[i], last_line_parsed);
-        }
-        
-        file.close();
-    }
-    else {
-        std::cout << "pas correct" << std::endl;
     }
     
-    return new Instance(instance_name, costs, covers);
+    return can_execute;
 }
 
-int InputChecker::readCosts(std::vector< std::vector<int> > all_integers, std::vector<int>& costs, int num_of_columns, int starting_line) {
-    int cpt_columns = 0;
-    int cpt_lines = starting_line;
+void InputChecker::readAlgorithm(const std::string algorithm_name) {
+    std::string str;
     
-    while (cpt_columns < num_of_columns) {
-        for (auto it = all_integers[cpt_lines].begin(); it != all_integers[cpt_lines].end(); it++) {
-            costs.push_back(*it);
-            cpt_columns++;
-        }
-        
-        cpt_lines++;
+    if (algorithm_name.compare("genetic") == 0) {
+        _algorithm = _algorithms::GENETIC;
+        str = "genetic";
+    }
+    else if (algorithm_name.compare("ant") == 0 ||
+             algorithm_name.compare("colony") == 0) {
+        _algorithm = _algorithms::ANT;
+        str = "ant";
     }
     
-    return cpt_lines;
+    std::cout << "The algorithm " << str << " is set" << std::endl;
 }
 
-int InputChecker::readCovers(std::vector<std::vector<int> > all_integers, std::vector<int> &cover, int starting_line) {
-    int cpt_lines = starting_line;
-    int cpt_rows = 0;
+void InputChecker::getHelp(const std::string prog_name, const std::string problem_name) {
+    //int num_input = 4;
     
-    int num_of_covered_row = all_integers[cpt_lines][0];
-    cpt_lines++;
-    
-    while (cpt_rows < num_of_covered_row) {
-        for (auto it = all_integers[cpt_lines].begin(); it != all_integers[cpt_lines].end(); it++) {
-            cover.push_back(*it);
-            cpt_rows++;
-        }
-        
-        cpt_lines++;
-    }
-    
-    return cpt_lines;
+    std::cout << "OVERVIEW: a " + problem_name + " problem solver by meta-heuristics" << std::endl;
+    std::cout << "USAGE: " + prog_name + " [options] <inputs>" << std::endl;
+    std::cout << "OPTIONS:" << std::endl;
+    //std::cout << num_input << " inputs" << std::endl;
+    std::cout << "\t -alg <algorithm>" << "\t Set a specific algorithm for the solver" << std::endl;
+    std::cout << "\t -instance <file>" << "\t Load the instance file" << std::endl;
+    std::cout << "\t -help" << "\t\t\t\t Give help" << std::endl;
+    std::cout << std::endl;
 }

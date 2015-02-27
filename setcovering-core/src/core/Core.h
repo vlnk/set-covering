@@ -11,4 +11,16 @@
 
 #include <stdio.h>
 
+#include "InputChecker.h"
+#include "../metaheuristics/Algorithm.h"
+
+class Core {
+private:
+    Algorithm& _algorithm;
+    
+public:
+    Core(Algorithm& algorithm);
+    ~Core();
+};
+
 #endif /* defined(__setcovering_core__Core__) */

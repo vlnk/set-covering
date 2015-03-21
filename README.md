@@ -19,9 +19,8 @@ Hi! This project is a metaheuristics program for the set covering problem.
 * Idées pour implémentations
 
 ### Articles ###
-1. Alberto Caprara, Paolo Toth, and Matteo Fischetti. Algorithms for the set covering problem. 98(1) :353–371.
-2. Rong-Long Wang and Kozo Okazaki. An improved genetic algorithm with conditional genetic operators and its application to set-covering problem. 11(7) :687–694.
-3. Zhi-Gang Ren, Zu-Ren Feng, Liang-Jun Ke, and Zhao-Jun Zhang. New ideas for applying ant colony optimization to the set covering problem. 58(4) :774–784.
-4. Marco Caserta. Tabu search-based metaheuristic algorithm for large-scale set covering problems. In KarlF. Doerner, Michel Gendreau, Peter Greistorfer, Walter Gutjahr, RichardF.
-Hartl, and Marc Reimann, editors, Metaheuristics, volume 39 of Operations Research/Computer Science Interfaces Series, pages 43–63. Springer US.
-5. Broderick Crawford, Ricardo Soto, Eric Monfoy, Fernando Paredes, and Wenceslao Palma. A hybrid ant algorithm for the set covering problem. 6(19) :4667–4673
+1. <s>Alberto Caprara, Paolo Toth, and Matteo Fischetti. Algorithms for the set covering problem. 98(1) :353–371.</s>
+2. <s>Rong-Long Wang and Kozo Okazaki. An improved genetic algorithm with conditional genetic operators and its application to set-covering problem. 11(7) :687–694.</s>
+3. <s>Zhi-Gang Ren, Zu-Ren Feng, Liang-Jun Ke, and Zhao-Jun Zhang. New ideas for applying ant colony optimization to the set covering problem. 58(4) :774–784.</s>
+4. <s>Marco Caserta. Tabu search-based metaheuristic algorithm for large-scale set covering problems. In KarlF. Doerner, Michel Gendreau, Peter Greistorfer, Walter Gutjahr, RichardF. Hartl, and Marc Reimann, editors, Metaheuristics, volume 39 of Operations Research/Computer Science Interfaces Series, pages 43–63. Springer US.</s>
+5. <s>Broderick Crawford, Ricardo Soto, Eric Monfoy, Fernando Paredes, and Wenceslao Palma. A hybrid ant algorithm for the set covering problem. 6(19) :4667–4673</s> [NUL]

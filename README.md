@@ -9,22 +9,11 @@ Hi! This project is a metaheuristics program for the set covering problem.
 * *setcovering-tests (python + rapport)* TO DO
 * *setcovering-report (latex)* TO DO
 
-### How do I get set up? ###
+### Rapport intermédiaire ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+* Trouver articles de recherche (+ les lire... ) [4/5]
+* Présentation des articles
+* Algorithme randomisé + résultats
+* Description du problème (énoncé,   définition   mathématique,   applications, intéret...)
+* Description des instances
+* Idées pour implémentations

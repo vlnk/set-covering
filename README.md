@@ -11,10 +11,10 @@ Hi! This project is a metaheuristics program for the set covering problem.
 
 ### Rapport intermédiaire ###
 
-* Trouver articles de recherche (+ les lire... ) [4/5]
-* Présentation des articles
+* Trouver articles de recherche (+ les lire... ) [5/5] *DONE*
+* Présentation des articles *DONE*
 * Algorithme randomisé + résultats
-* Description du problème (énoncé,   définition   mathématique,   applications, intéret...)
+* Description du problème (énoncé,   définition   mathématique,   applications, intérêt...) *DONE*
 * Description des instances
 * Idées pour implémentations
 

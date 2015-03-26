@@ -30,8 +30,11 @@ bool InputChecker::readArguments(int argc, const char * argv[]) {
             else if ((*it).compare("-alg") == 0) {
                 if (it + 1 != arguments.end()) readAlgorithm(*(it + 1));
             }
-            else if ((*it).compare("-instance") == 0) {
+            else if ((*it).compare("-in") == 0) {
                 if (it + 1 != arguments.end()) _instance_name = *(it + 1);
+            }
+            else if ((*it).compare("-out") == 0) {
+                if (it + 1 != arguments.end()) _report_name = *(it + 1);
             }
         }
     }

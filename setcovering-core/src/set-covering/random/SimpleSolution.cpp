@@ -110,9 +110,10 @@ const int SimpleSolution::getNumOfCovers(const int element_index, const ProblemS
     return numOfCovers;
 }
 
+/*
 void SimpleSolution::processTwoFlip(std::pair<int, int> twoFlip, const ProblemSetCovering& p) {
     
     removeSubset(twoFlip.first, p);
 }
-
+*/
 

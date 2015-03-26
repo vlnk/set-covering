@@ -45,7 +45,6 @@ public:
     }
     
     friend std::ostream& operator << (std::ostream& output, const Solution<T>& sol) {
-        output << "SOLUTION" << std::endl;
         output << "objective function: " << sol._objective_function << std::endl;
         
         return output;

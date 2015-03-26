@@ -23,7 +23,7 @@ public:
     bool validate(const ProblemSetCovering&) const;
     void addSubset(const int, const ProblemSetCovering&);
     void removeSubset(const int, const ProblemSetCovering&);
-    void processTwoFlip(std::pair<int, int>, const ProblemSetCovering&);
+    //void processTwoFlip(std::pair<int, int>, const ProblemSetCovering&);
     
     const int getNumOfCovers(const int index_element, const ProblemSetCovering& pb);
     

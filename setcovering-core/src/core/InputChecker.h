@@ -23,6 +23,7 @@ private:
     
     int _algorithm;
     std::string _instance_name;
+    std::string _report_name;
     
     InputChecker() : _algorithm(0) {};
     ~InputChecker() {};

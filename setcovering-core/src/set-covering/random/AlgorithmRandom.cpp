@@ -78,9 +78,9 @@ const SimpleSolution& AlgorithmSimpleLocalSearch::getNeighbour() {
     int index_best = 0;
     
     do {
-        std::pair<int, int> twoFlip = orientateNeighbourhoodFor2Flip();
+        int flip = orientateNeighbourhood(*_neighbours[k]);
         
-        _neighbours[k]->processTwoFlip(twoFlip, *_problem);
+        _neighbours[k]->removeSubset(flip, *_problem);
         repair(*_neighbours[k]);
         _neighbours[k]->setObjective(estimate(*_neighbours[k]));
         
@@ -96,11 +96,14 @@ const SimpleSolution& AlgorithmSimpleLocalSearch::getNeighbour() {
     return *_neighbours[index_best];
 }
 
-std::pair<int, int> AlgorithmSimpleLocalSearch::orientateNeighbourhoodFor2Flip() {
-    int random_delete = rand() % _problem->getNumOfSubsets();
-    int random_add = rand() % _problem->getNumOfSubsets();
+const int AlgorithmSimpleLocalSearch::orientateNeighbourhood(const SimpleSolution& sol) {
+    int random_delete;
     
-    return std::pair<int, int>(random_delete, random_add);
+    do {
+        random_delete = rand() % _problem->getNumOfSubsets();
+    } while (!sol.isSubsetAccepted(random_delete));
+    
+    return random_delete;
 }
 
 void AlgorithmSimpleLocalSearch::repair(SimpleSolution & sol) {

@@ -22,7 +22,7 @@ public:
 private:
     const SimpleSolution& getNeighbour();
     void repair(SimpleSolution&);
-    std::pair<int, int> orientateNeighbourhoodFor2Flip();
+    const int orientateNeighbourhood(const SimpleSolution&);
     
     const SimpleSolution& initializeSolution();
 };

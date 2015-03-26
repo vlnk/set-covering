@@ -17,16 +17,10 @@ int main(int argc, const char * argv[]) {
         if (can_execute) {
             ProblemSetCovering pb(checker.getInstanceName());
             AlgorithmSimpleLocalSearch alg(&pb, 10000, pb.getNumOfSubsets()/3);
-            
-            std::cout << pb << std::endl;
-            
             SimpleSolution sol = alg.run();
             
-            std::cout << "INITIAL " << alg.getInitial() << std::endl;
-            
-            std::cout << sol << std::endl;
+            std::cout << sol.getObjective() << std::endl;
         }
-        
     }
     catch (std::invalid_argument& e) {
         std::cout << e.what() << std::endl;

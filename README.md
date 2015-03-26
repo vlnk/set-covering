@@ -9,22 +9,18 @@ Hi! This project is a metaheuristics program for the set covering problem.
 * *setcovering-tests (python + rapport)* TO DO
 * *setcovering-report (latex)* TO DO
 
-### How do I get set up? ###
+### Rapport intermédiaire ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+* Trouver articles de recherche (+ les lire... ) [5/5] *DONE*
+* Présentation des articles *DONE*
+* Algorithme randomisé + résultats
+* Description du problème (énoncé,   définition   mathématique,   applications, intérêt...) *DONE*
+* Description des instances
+* Idées pour implémentations
 
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+### Articles ###
+1. Alberto Caprara, Paolo Toth, and Matteo Fischetti. Algorithms for the set covering problem. 98(1) :353–371. [LU]
+2. Rong-Long Wang and Kozo Okazaki. An improved genetic algorithm with conditional genetic operators and its application to set-covering problem. 11(7) :687–694.[LU]
+3. Zhi-Gang Ren, Zu-Ren Feng, Liang-Jun Ke, and Zhao-Jun Zhang. New ideas for applying ant colony optimization to the set covering problem. 58(4) :774–784. [LU]
+4. Marco Caserta. Tabu search-based metaheuristic algorithm for large-scale set covering problems. In KarlF. Doerner, Michel Gendreau, Peter Greistorfer, Walter Gutjahr, RichardF. Hartl, and Marc Reimann, editors, Metaheuristics, volume 39 of Operations Research/Computer Science Interfaces Series, pages 43–63. Springer US. [LU]
+5. Broderick Crawford, Ricardo Soto, Eric Monfoy, Fernando Paredes, and Wenceslao Palma. A hybrid ant algorithm for the set covering problem. 6(19) :4667–4673 [LU = NUL]

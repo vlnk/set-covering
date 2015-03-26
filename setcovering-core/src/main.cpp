@@ -1,19 +1,13 @@
-//
-//  main.cpp
-//  setcovering-core
-//
-//  Created by Valentin Laurent on 2015-02-20.
-//
-//
-
 #include <iostream>
 #include <stdexcept>
 #include "core/InputChecker.h"
-#include "core/Problem.h"
-#include "metaheuristics/genetic/AlgorithmGenetic.h"
+#include "set-covering/ProblemSetCovering.h"
+#include "set-covering/random/AlgorithmRandom.h"
+#include "set-covering/random/SimpleSolution.h"
 
 int main(int argc, const char * argv[]) {
     
+    srand (static_cast<unsigned int>(time(NULL)));
     InputChecker& checker = InputChecker::getInstance();
     
     try {
@@ -21,14 +15,26 @@ int main(int argc, const char * argv[]) {
         bool can_execute = checker.readArguments(argc, argv);
         
         if (can_execute) {
-            Problem* pb = new Problem(checker.getInstanceName());
-            Algorithm* alg = new AlgorithmGenetic(*pb);
+            ProblemSetCovering pb(checker.getInstanceName());
+            AlgorithmSimpleLocalSearch alg(&pb, 10000, pb.getNumOfSubsets()/3);
             
-            std::cout << pb->getNumOfElements() << std::endl;
-            std::cout << pb->getNumOfCovers() << std::endl;
+            std::cout << pb << std::endl;
+            
+            SimpleSolution sol = alg.run();
+            
+            std::cout << "INITIAL " << alg.getInitial() << std::endl;
+            
+            std::cout << sol << std::endl;
         }
         
-    } catch (std::invalid_argument& e) {
+    }
+    catch (std::invalid_argument& e) {
+        std::cout << e.what() << std::endl;
+    }
+    catch (std::out_of_range& e) {
+        std::cout << e.what() << std::endl;
+    }
+    catch (std::fstream::failure& e) {
         std::cout << e.what() << std::endl;
     }
     

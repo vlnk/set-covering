@@ -52,13 +52,13 @@ void InputChecker::readAlgorithm(const std::string algorithm_name) {
         str = "ant";
     }
     
-    std::cout << "The algorithm " << str << " is set" << std::endl;
+    //std::cout << "The algorithm " << str << " is set" << std::endl;
 }
 
 void InputChecker::getHelp(const std::string prog_name, const std::string problem_name) {
     //int num_input = 4;
     
-    std::cout << "OVERVIEW: a " + problem_name + " problem solver by meta-heuristics" << std::endl;
+    std::cout << "OVERVIEW: a " + problem_name + " problem solver by metaheuristics" << std::endl;
     std::cout << "USAGE: " + prog_name + " [options] <inputs>" << std::endl;
     std::cout << "OPTIONS:" << std::endl;
     //std::cout << num_input << " inputs" << std::endl;

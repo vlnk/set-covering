@@ -24,7 +24,13 @@ public:
     const std::vector<bool> getSubset(int) const;
     int const getCost(int subset_index) const { return _costs[subset_index]; }
     
-    const int getBestCoveredSubset(const int&) const;
+    const int getMaxCost() const {
+        auto it = std::max_element(_costs.begin(), _costs.end());
+        return  *it;
+    }
+    
+    const int getSmallerCoveredSubset(const int&) const;
+    const int getLargerCoveredSubset(const int&) const;
     
     friend std::ostream& operator << (std::ostream& output, const ProblemSetCovering& pb);
     

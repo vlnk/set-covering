@@ -5,7 +5,9 @@ Problem(file_name),
 _num_of_elements(num_of_elements),
 _num_of_subsets(num_of_covers),
 _costs(costs),
-_covers_by_elements(covers){}
+_covers_by_elements(covers){
+
+}
 
 ProblemSetCovering::ProblemSetCovering(std::string file_name):
 Problem(file_name) {
@@ -81,7 +83,7 @@ void ProblemSetCovering::setProblemMatrix(const std::vector<std::vector<int> > c
             it_covers_begin = covers[i].begin();
             it_covers_end = covers[i].end();
             
-            std::vector<int>::const_iterator seacher = std::find(it_covers_begin, it_covers_end, j);
+            std::vector<int>::const_iterator seacher = std::find(it_covers_begin, it_covers_end, j + 1);
             
             if (seacher != it_covers_end) {
                 _covers_by_elements[i][j] = true;
@@ -139,39 +141,45 @@ const std::vector<bool> ProblemSetCovering::getSubset(int subset_index) const {
     return subset;
 }
 
-const int ProblemSetCovering::getBestCoveredSubset(const int& subset_index) const {
-    std::vector<bool> subset_to_change = getSubset(subset_index);
-    int best_candidate = subset_index;
+const int ProblemSetCovering::getSmallerCoveredSubset(const int& element_index) const {
+    int best_cost = std::numeric_limits<int>::infinity();
+    int best_subset = 0;
     
     for (int j = 0; j < _num_of_subsets; j++) {
         
-        std::vector<bool> candidate_subset = getSubset(j);
-        bool isCovered = true;
-        int i = 0;
-        
-        if (j != subset_index) {
-            
-            while (i < _num_of_elements && isCovered) {
-                if (subset_to_change[i] && candidate_subset[i]) {
-                    i++;
-                }
-                else {
-                    isCovered = false;
-                }
-            }
-            
-            if (i == _num_of_elements && getCost(j) < getCost(subset_index)) {
-                best_candidate = j;
+        if (_covers_by_elements[element_index][j]) {
+            if (_costs[j] < best_cost) {
+                best_cost = _costs[j];
+                best_subset = j;
             }
         }
     }
     
-    return best_candidate;
+    return best_subset;
+}
+
+const int ProblemSetCovering::getLargerCoveredSubset(const int& element_index) const {
+    int best_cost = 0;
+    int best_subset = 0;
+    
+    for (int j = 0; j < _num_of_subsets; j++) {
+        
+        if (_covers_by_elements[element_index][j]) {
+            if (_costs[j] > best_cost) {
+                best_cost = _costs[j];
+                best_subset = j;
+            }
+        }
+    }
+    
+    return best_subset;
 }
 
 std::ostream& operator << (std::ostream& output, const ProblemSetCovering& pb) {
-    output << "SET-COVERING PROBLEM" << std::endl;
-    output << "instance name: " << pb._name << std::endl;
+    output << "problem: set-covering" << std::endl;
+    
+    output << static_cast<const Problem&>(pb);
+    
     output << "number of elements: " << pb._num_of_elements << std::endl;
     output << "number of sets: " << pb._num_of_subsets << std::endl;
     

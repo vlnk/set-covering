@@ -12,7 +12,7 @@
 #include <stdio.h>
 
 #include "InputChecker.h"
-#include "../metaheuristics/Algorithm.h"
+#include "../framework/Algorithm.h"
 
 class Core {
 private:

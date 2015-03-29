@@ -11,7 +11,7 @@ private:
     std::vector<SimpleSolution*> _neighbours;
     
 public:
-    AlgorithmSimpleLocalSearch(ProblemSetCovering*, int, double);
+    AlgorithmSimpleLocalSearch(ProblemSetCovering*, int, const unsigned int&, double);
     const SimpleSolution& run();
     
     const int estimate(const SimpleSolution&);

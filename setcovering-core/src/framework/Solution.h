@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <iostream>
 #include "Problem.h"
+#include "Algorithm.h"
 
 template <typename T>
 class Solution {
@@ -11,7 +12,7 @@ protected:
     double _objective_function;
     
 public:
-    double getObjective() const {
+    const double getObjective() const {
         return _objective_function;
     }
     
@@ -32,7 +33,7 @@ public:
     template<typename U>
     Solution<U>& operator = (const Solution<U>&);
     
-    virtual bool validate(const T&) const = 0;
+    virtual const bool validate(const T&) const = 0;
     
     template<typename U>
     bool operator < (const Solution<U>& s) {

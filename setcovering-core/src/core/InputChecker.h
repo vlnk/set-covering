@@ -22,10 +22,12 @@ private:
     enum _algorithms {GENETIC=0, ANT=1};
     
     int _algorithm;
+    bool _isReportSpecified;
+    bool _isVerboseActive;
     std::string _instance_name;
     std::string _report_name;
     
-    InputChecker() : _algorithm(0) {};
+    InputChecker() : _algorithm(0), _isReportSpecified(false), _isVerboseActive(false) {};
     ~InputChecker() {};
     
     InputChecker& operator= (const InputChecker) = delete;
@@ -36,8 +38,12 @@ public:
 
     bool readArguments(int, const char * argv[]);
     void readAlgorithm(const std::string);
-    void getHelp(const std::string prog_name, const std::string problem_name);
+    
+    void getHelp(const std::string, const std::string);
     const std::string& getInstanceName() const { return _instance_name; }
+    
+    const bool isVerbose() const { return _isVerboseActive; }
+    const bool isReportSpecify() const { return _isReportSpecified; }
 };
 
 

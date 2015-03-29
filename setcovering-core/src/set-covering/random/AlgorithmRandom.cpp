@@ -1,7 +1,7 @@
 #include "AlgorithmRandom.h"
 
-AlgorithmSimpleLocalSearch::AlgorithmSimpleLocalSearch(ProblemSetCovering* pb, int nb_eval_max, double pivot):
-Algorithm(pb, nb_eval_max) {
+AlgorithmSimpleLocalSearch::AlgorithmSimpleLocalSearch(ProblemSetCovering* pb, int nb_eval_max, const unsigned int& seed, double pivot):
+Algorithm(pb, nb_eval_max, "descent", seed) {
     _current = new SimpleSolution(initializeSolution());
     
     double K = _problem->getNumOfSubsets() / pivot;
@@ -31,7 +31,7 @@ const SimpleSolution& AlgorithmSimpleLocalSearch::run() {
     do {
         next = getNeighbour();
 
-        if (next < *_current ) {
+        if (next.getObjective() < _current->getObjective() ) {
             *_current = next;
         }
         
@@ -49,6 +49,7 @@ const SimpleSolution& AlgorithmSimpleLocalSearch::initializeSolution() {
         _initial->addSubset(random_subset, *_problem);
     }
     
+    _initial->setObjective(estimate(*_initial));
     return *_initial;
 }
 

@@ -1,14 +1,15 @@
 #include <iostream>
 #include <stdexcept>
 #include "core/InputChecker.h"
+#include "framework/Algorithm.h"
 #include "set-covering/ProblemSetCovering.h"
 #include "set-covering/random/AlgorithmRandom.h"
-#include "set-covering/random/SimpleSolution.h"
+#include "set-covering/genetic/AlgorithmGenetic.h"
 
 int main(int argc, const char * argv[]) {
     
-    srand (static_cast<unsigned int>(time(NULL)));
     InputChecker& checker = InputChecker::getInstance();
+    long seed = std::chrono::system_clock::now().time_since_epoch().count();
     
     try {
         
@@ -16,10 +17,23 @@ int main(int argc, const char * argv[]) {
         
         if (can_execute) {
             ProblemSetCovering pb(checker.getInstanceName());
-            AlgorithmSimpleLocalSearch alg(&pb, 10000, pb.getNumOfSubsets()/3);
-            SimpleSolution sol = alg.run();
+            //AlgorithmSimpleLocalSearch alg(&pb, 10000, static_cast<unsigned int>(seed), pb.getNumOfSubsets()/3);
+            AlgorithmGenetic alg(&pb, 100000, static_cast<unsigned int>(seed), 20, 0.9, 0.6);
             
-            std::cout << sol.getObjective() << std::endl;
+            if (checker.isVerbose()) {
+                std::cout << pb << std::endl;
+                std::cout << alg << std::endl;
+                //std::cout << "initial solution:" << std::endl << alg.getInitial() << std::endl;
+            }
+            
+            SolutionSetCovering sol = alg.run();
+            
+            if (checker.isVerbose()) {
+                std::cout << "final solution:" << std::endl << sol << std::endl;
+            }
+            else {
+                std::cout << sol.getObjective() << std::endl;
+            }
         }
     }
     catch (std::invalid_argument& e) {
